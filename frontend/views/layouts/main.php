@@ -7,6 +7,12 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\models\user;
+use frontend\models\Schedule;
+use frontend\models\Semester;
+
+use frontend\models\Subjects;
+use frontend\controllers;
 
 AppAsset::register($this);
 ?>
@@ -68,13 +74,10 @@ AppAsset::register($this);
 <div>
 
 <div class="wrap">
+     <?php
+    if (!Yii::$app->user->isGuest){
+echo "Chào ".'<i style="color:pink;">'.Yii::$app->user->identity->name."!".'</i>';}?>
     <?php
-    $menuItems = [
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -83,14 +86,58 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
-    }
+    
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
     ?>
-<?php $this->endBody() ?>
+         <div style="background-color: white; margin-left:20%; margin-right: 20%">
 
+<?php $this->endBody() ?>
+<div style="text-align: center; padding-bottom: 1%; padding-top: 1%; font-size: 200%"><b>Lấy ý kiến phản hồi từ người học đối với giảng viên</b> </div>
+
+
+    <div>
+
+
+        <?php 
+    $getdata = new semester(); $getyear = $getdata->getYear();
+  echo "Thời khóa biểu: ".$getyear->year; ?>
+    <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:8px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:8px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-fvme{font-weight:bold;font-size:16px;font-family:"Times New Roman", Times, serif !important;;border-color:inherit;text-align:left}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-fvme">Mã học phần</th>
+    <th class="tg-fvme">Tên học phần</th>
+    <th class="tg-fvme">Giảng viên</th>
+    <th class="tg-fvme">Trạng thái</th>
+    <th class="tg-fvme">#</th>
+  </tr>
+  <?php
+$getdata = new schedule();
+$getdata1=new Subjects();
+$getsubject=$getdata1->getSchedules();
+ $getsemes = $getdata->getseme();
+    foreach ($getsemes as $item): ?>
+   <tr>
+    <td>  <?php echo $item->offercode?> </td>
+<td> <?php $getsubject=$getdata1->getSchedules();
+ ?></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<?php endforeach; 
+      ?> 
+</table>
+ 
+    </div>
+ 
 
 <!-- Just an image -->
 

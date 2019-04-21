@@ -12,7 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-
+use frontend\models\User;
 /**
  * Site controller
  */
@@ -49,6 +49,8 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+
+
     public function actions()
     {
          return [
@@ -62,10 +64,14 @@ class SiteController extends Controller
      * Displays homepage.
      *
      * @return mixed
+
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $user=user::find()->all();
+        return $this->render('index',[
+            'user'=>$user]
+    );
     }
 
     /**
