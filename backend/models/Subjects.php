@@ -44,10 +44,10 @@ class Subjects extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'offercode' => 'Offercode',
-            'subjectname' => 'Subjectname',
-            'status' => 'Status',
-            'description' => 'Description',
+            'offercode' => 'Mã môn',
+            'subjectname' => 'Tên môn',
+            'status' => 'Trạng thái',
+            'description' => 'Mô tả',
         ];
     }
 

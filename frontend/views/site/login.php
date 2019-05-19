@@ -13,7 +13,7 @@ use yii\bootstrap\ActiveForm;
 </div>
 <div class="row" style="border: 1px solid #3399CC; background-color: #3399CC">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0%" >
-        <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #3399CC; width: 1920px">
+        <div class="collapse navbar-collapse" id="navbarNav" style="background-color: #3399CC; width: 1124px">
             <ul class="navbar-nav" style="margin-left: 10%" >
                 <li class="nav-item ">
                     <a class="nav-link aitem" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>

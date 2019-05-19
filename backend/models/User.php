@@ -57,17 +57,17 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Tài khoản',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
-            'tel' => 'Tel',
-            'address' => 'Address',
-            'name' => 'Name',
-            'status' => 'Status',
-            'avatar' => 'Avatar',
-            'batch' => 'Batch',
+            'tel' => 'SĐT',
+            'address' => 'Địa chỉ',
+            'name' => 'Tên',
+            'status' => 'Trạng thái',
+            'avatar' => 'Ảnh',
+            'batch' => 'Khoá',
         ];
     }
 

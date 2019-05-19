@@ -32,9 +32,9 @@ class Teacher extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['teacherName', 'major', 'departmentID'], 'required'],
+            [['teacherName', 'departmentID'], 'required'],
             [['departmentID', 'status'], 'integer'],
-            [['teacherName', 'major', 'avatar'], 'string', 'max' => 255],
+            [['teacherName','avatar'], 'string', 'max' => 255],
         ];
     }
 
@@ -44,12 +44,11 @@ class Teacher extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'teacherID' => 'Teacher I D',
-            'teacherName' => 'Teacher Name',
-            'major' => 'Major',
-            'departmentID' => 'Department I D',
-            'status' => 'Status',
-            'avatar' => 'Avatar',
+            'teacherID' => 'Mã giảng viên',
+            'teacherName' => 'Tên giáo viên',
+            'departmentID' => 'Mã khoa',
+            'status' => 'Trạng thái',
+            'avatar' => 'Ảnh',
         ];
     }
 
@@ -59,5 +58,9 @@ class Teacher extends \yii\db\ActiveRecord
     public function getClasses()
     {
         return $this->hasMany(Classes::className(), ['teacherID' => 'teacherID']);
+    }
+     public function getDepartmentID()
+    {
+        return $this->hasMany(Department::className(), ['departmentID' => 'departmentID']);
     }
 }

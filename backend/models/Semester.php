@@ -29,8 +29,7 @@ class Semester extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['year', 'semester'], 'required'],
-            [['semester'], 'integer'],
+            [['year', ], 'required'],
             [['year'], 'string', 'max' => 255],
         ];
     }
@@ -41,9 +40,8 @@ class Semester extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'year' => 'Year',
-            'semester' => 'Semester',
+            'ID' => 'Mã kỳ',
+            'year' => 'Năm học',
         ];
     }
 

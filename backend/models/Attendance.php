@@ -3,7 +3,7 @@
 namespace backend\models;
 
 use Yii;
-
+use backend\models\User;
 /**
  * This is the model class for table "attendance".
  *
@@ -12,8 +12,8 @@ use Yii;
  * @property int $classID
  *
  * @property User $student
- * @property Class $class
- * @property Evalutionform $evalutionform
+ * @property Classes $class
+ * @property Evalutionform[] $evalutionforms
  */
 class Attendance extends \yii\db\ActiveRecord
 {
@@ -32,9 +32,10 @@ class Attendance extends \yii\db\ActiveRecord
     {
         return [
             [['studentID', 'classID'], 'required'],
-            [['studentID', 'classID'], 'integer'],
+            [['studentID', 'classID', 'username'], 'integer'],
+            ['name', 'string'],
             [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['studentID' => 'id']],
-            [['classID'], 'exist', 'skipOnError' => true, 'targetClass' => Class::className(), 'targetAttribute' => ['classID' => 'id']],
+            [['classID'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::className(), 'targetAttribute' => ['classID' => 'id']],
         ];
     }
 
@@ -45,8 +46,8 @@ class Attendance extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'studentID' => 'Student I D',
-            'classID' => 'Class I D',
+            'studentID' => 'ID sinh viên',
+            'classID' => 'ID lớp',
         ];
     }
 
@@ -63,14 +64,14 @@ class Attendance extends \yii\db\ActiveRecord
      */
     public function getClass()
     {
-        return $this->hasOne(Class::className(), ['id' => 'classID']);
+        return $this->hasOne(Classes::className(), ['id' => 'classID']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEvalutionform()
+    public function getEvalutionforms()
     {
-        return $this->hasOne(Evalutionform::className(), ['attendanceID' => 'id']);
+        return $this->hasMany(Evalutionform::className(), ['attendanceID' => 'id']);
     }
 }

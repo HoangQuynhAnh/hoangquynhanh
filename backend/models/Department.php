@@ -11,6 +11,8 @@ use Yii;
  * @property string $department
  *
  * @property Studentmajors[] $studentmajors
+ * @property Teacher[] $teachers
+ * @property Teacher[] $teachers0
  */
 class Department extends \yii\db\ActiveRecord
 {
@@ -40,7 +42,7 @@ class Department extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'department' => 'Department',
+            'department' => 'Khoa',
         ];
     }
 
@@ -50,5 +52,21 @@ class Department extends \yii\db\ActiveRecord
     public function getStudentmajors()
     {
         return $this->hasMany(Studentmajors::className(), ['departmentID' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTeachers()
+    {
+        return $this->hasMany(Teacher::className(), ['departmentID' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTeachers0()
+    {
+        return $this->hasMany(Teacher::className(), ['departmentID' => 'id']);
     }
 }

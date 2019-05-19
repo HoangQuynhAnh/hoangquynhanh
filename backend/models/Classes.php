@@ -33,7 +33,8 @@ class Classes extends \yii\db\ActiveRecord
     {
         return [
             [['scheduleID', 'teacherID'], 'required'],
-            [['scheduleID', 'teacherID'], 'integer'],
+            [['scheduleID', 'teacherID','semesterID'], 'integer'],
+            [['teacherName','offercode'], 'string'],
             [['scheduleID'], 'exist', 'skipOnError' => true, 'targetClass' => Schedule::className(), 'targetAttribute' => ['scheduleID' => 'id']],
             [['teacherID'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::className(), 'targetAttribute' => ['teacherID' => 'teacherID']],
         ];
@@ -45,9 +46,9 @@ class Classes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'scheduleID' => 'Schedule I D',
-            'teacherID' => 'Teacher I D',
+            'id' => 'Mã lớp',
+            'scheduleID' => 'ID lịch môn học',
+            'teacherID' => 'Mã giảng viên',
         ];
     }
 

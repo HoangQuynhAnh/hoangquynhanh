@@ -45,17 +45,14 @@ class Subjects extends \yii\db\ActiveRecord
     {
         return [
             'offercode' => 'Offercode',
-            'subjectname' => 'Subjectname',
-            'status' => 'Status',
-            'description' => 'Description',
+            'subjectname' => 'Tên môn học',
+            'status' => 'Trạng thái',
+            'description' => 'Mô tả',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSchedules()
-    {
-        return $this->hasMany(Schedule::className(), ['offercode' => 'offercode']);
-    }
+
 }

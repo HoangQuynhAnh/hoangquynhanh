@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use yii\data\SqlDataProvider;
 use Yii;
 
 /**
@@ -22,7 +23,7 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'schedule';
+      return 'schedule';
     }
 
     /**
@@ -30,13 +31,13 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
-            [['semesterID', 'offercode'], 'required'],
-            [['semesterID'], 'integer'],
-            [['offercode'], 'string', 'max' => 11],
-            [['offercode'], 'exist', 'skipOnError' => true, 'targetClass' => Subjects::className(), 'targetAttribute' => ['offercode' => 'offercode']],
-            [['semesterID'], 'exist', 'skipOnError' => true, 'targetClass' => Semester::className(), 'targetAttribute' => ['semesterID' => 'ID']],
-        ];
+      return [
+        [['semesterID', 'offercode'], 'required'],
+        [['semesterID'], 'integer'],
+        [['offercode', 'subjectname'], 'string', 'max' => 11],
+        [['offercode'], 'exist', 'skipOnError' => true, 'targetClass' => Subjects::className(), 'targetAttribute' => ['offercode' => 'offercode']],
+        [['semesterID'], 'exist', 'skipOnError' => true, 'targetClass' => Semester::className(), 'targetAttribute' => ['semesterID' => 'ID']],
+      ];
     }
 
     /**
@@ -44,11 +45,11 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-        return [
-            'id' => 'ID',
-            'semesterID' => 'Semester I D',
-            'offercode' => 'Offercode',
-        ];
+      return [
+        'id' => 'ID',
+        'semesterID' => 'Semester I D',
+        'offercode' => 'Mã môn học',
+      ];
     }
 
     /**
@@ -56,7 +57,7 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function getClasses()
     {
-        return $this->hasMany(Classes::className(), ['scheduleID' => 'id']);
+      return $this->hasMany(Classes::className(), ['scheduleID' => 'id']);
     }
 
     /**
@@ -64,18 +65,29 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function getOffercode0()
     {
-        return $this->hasOne(Subjects::className(), ['offercode' => 'offercode']);
+      return $this->hasOne(Subjects::className(), ['offercode' => 'offercode']);
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getSemester()
     {
-        return $this->hasOne(Semester::className(), ['ID' => 'semesterID']);
+      return $this->hasOne(Semester::className(), ['ID' => 'semesterID']);
     }
-    public function getseme() {
-    $data = Schedule::find()->all();
-    return $data;
-}
+  public function getGiaTri1(){
+     $student_id = Yii::$app->user->identity->id;
+  $get = Yii::$app->db->createCommand('select (@cnt := @cnt + 1) AS "#", subjects.offercode, subjects.subjectname, teacher.teacherName, attendance.id
+      from attendance
+      join classes on attendance.classID = classes.id
+      join teacher on teacher.teacherID = classes.teacherID
+      join schedule on schedule.id = classes.scheduleID
+      join subjects on subjects.offercode = schedule.offercode
+      join semester on semester.ID = schedule.semesterID
+      cross join (select @cnt := 0) as dummy
+      where attendance.studentID = ' . $student_id . '
+      and semester.ID = (select max(id) from semester)')->queryAll();
+    return $get;
+   }
+//        $data = Schedule::find()->where(['offercode' => 'COMP '])->with('Schedule.Subjects')->one();
+  //  return $data;
 }

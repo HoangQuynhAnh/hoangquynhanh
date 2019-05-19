@@ -1,0 +1,10 @@
+.aitem{
+    background-color: #3399CC;
+    color: white !important;
+    font-size: 100%;
+    font-weight: 500;
+}
+.aitem:hover{
+    background-color: white;
+    color: #3399CC !important;
+}
