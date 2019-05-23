@@ -25,6 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('<span class=""></span>Thêm mới', ['create'], ['class' => 'btn btn-primary btn-info']) ?>
+   
     </p>
 
     <?= DetailView::widget([

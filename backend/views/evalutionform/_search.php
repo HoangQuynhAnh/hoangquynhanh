@@ -4,24 +4,24 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\SearchAttendance */
+/* @var $model backend\models\SearchEvalutionform */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="attendance-search">
+<div class="evalutionform-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'attendanceID') ?>
 
-    <?= $form->field($model, 'studentID') ?>
+    <?= $form->field($model, 'score') ?>
 
-    <?= $form->field($model, 'classID') ?>
+    <?= $form->field($model, 'date') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'comment') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

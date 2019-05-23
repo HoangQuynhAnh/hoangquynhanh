@@ -33,7 +33,7 @@ class Evalutionform extends \yii\db\ActiveRecord
             [['attendanceID', 'score', 'date'], 'required'],
             [['attendanceID', 'score'], 'integer'],
             [['date'], 'safe'],
-            [['comment'], 'string'],
+            [['comment','name'], 'string'],
             [['attendanceID'], 'unique'],
             [['attendanceID'], 'exist', 'skipOnError' => true, 'targetClass' => Attendance::className(), 'targetAttribute' => ['attendanceID' => 'id']],
         ];
@@ -45,10 +45,10 @@ class Evalutionform extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'attendanceID' => 'Attendance I D',
-            'score' => 'Score',
-            'date' => 'Date',
-            'comment' => 'Comment',
+            'attendanceID' => 'Mã lớp sinh viên',
+            'score' => 'Điểm',
+            'date' => 'Ngày',
+            'comment' => 'Nhận xét',
         ];
     }
 

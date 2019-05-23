@@ -3,17 +3,18 @@
 namespace backend\models;
 
 use Yii;
-use backend\models\User;
+
 /**
  * This is the model class for table "attendance".
  *
  * @property int $id
  * @property int $studentID
  * @property int $classID
+ * @property string $name
  *
  * @property User $student
  * @property Classes $class
- * @property Evalutionform[] $evalutionforms
+ * @property Evalutionform $evalutionform
  */
 class Attendance extends \yii\db\ActiveRecord
 {
@@ -32,8 +33,8 @@ class Attendance extends \yii\db\ActiveRecord
     {
         return [
             [['studentID', 'classID'], 'required'],
-            [['studentID', 'classID', 'username'], 'integer'],
-            ['name', 'string'],
+            [['studentID', 'classID'], 'integer'],
+            [['name'], 'string', 'max' => 255],
             [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['studentID' => 'id']],
             [['classID'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::className(), 'targetAttribute' => ['classID' => 'id']],
         ];
@@ -45,9 +46,10 @@ class Attendance extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Mã lớp sinh viên',
             'studentID' => 'ID sinh viên',
-            'classID' => 'ID lớp',
+            'classID' => 'Mã lớp giảng viên',
+            'name' => 'Tên lớp',
         ];
     }
 
@@ -70,8 +72,8 @@ class Attendance extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEvalutionforms()
+    public function getEvalutionform()
     {
-        return $this->hasMany(Evalutionform::className(), ['attendanceID' => 'id']);
+        return $this->hasOne(Evalutionform::className(), ['attendanceID' => 'id']);
     }
 }

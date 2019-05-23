@@ -33,7 +33,7 @@ class Schedule extends \yii\db\ActiveRecord
         return [
             [['semesterID', 'offercode'], 'required'],
             [['semesterID'], 'integer'],
-            [['offercode', 'year','subjectName'], 'string', 'max' => 11],
+            [['offercode'], 'string', 'max' => 11],
             [['offercode'], 'exist', 'skipOnError' => true, 'targetClass' => Subjects::className(), 'targetAttribute' => ['offercode' => 'offercode']],
             [['semesterID'], 'exist', 'skipOnError' => true, 'targetClass' => Semester::className(), 'targetAttribute' => ['semesterID' => 'ID']],
         ];
@@ -45,9 +45,9 @@ class Schedule extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Mã lịch',
-            'semesterID' => 'Mã kỳ học',
-            'offercode' => 'Môn học',
+            'id' => 'Mã môn theo học kỳ',
+            'semesterID' => 'Mã học kỳ',
+            'offercode' => 'Mã môn học',
         ];
     }
 

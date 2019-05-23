@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int $scheduleID
  * @property int $teacherID
+ * @property string $name
  *
  * @property Attendance[] $attendances
  * @property Schedule $schedule
@@ -32,9 +33,9 @@ class Classes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['scheduleID', 'teacherID'], 'required'],
-            [['scheduleID', 'teacherID','semesterID'], 'integer'],
-            [['teacherName','offercode'], 'string'],
+            [['scheduleID', 'teacherID', 'name'], 'required'],
+            [['scheduleID', 'teacherID'], 'integer'],
+            [['name'], 'string', 'max' => 255],
             [['scheduleID'], 'exist', 'skipOnError' => true, 'targetClass' => Schedule::className(), 'targetAttribute' => ['scheduleID' => 'id']],
             [['teacherID'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::className(), 'targetAttribute' => ['teacherID' => 'teacherID']],
         ];
@@ -46,9 +47,10 @@ class Classes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Mã lớp',
-            'scheduleID' => 'ID lịch môn học',
-            'teacherID' => 'Mã giảng viên',
+            'id' => 'Mã lớp giảng viên',
+            'scheduleID' => 'Mã môn theo học kỳ',
+            'teacherID' => 'Teacher I D',
+            'name' => 'Tên lớp ',
         ];
     }
 

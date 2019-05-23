@@ -19,7 +19,7 @@ $news = $news->getthongke();*/
                         <div class="small-box bg-aqua">
                             <div class="inner">
                                 <h3><?php echo '14'; ?></h3>
-                                <p>Sản phẩm bán chạy </p>
+                                <p>Danh sách giảng viên xuất sắc</p>
                             </div>
                             <div class="icon">
                                 <i class="ion-ios-calendar-outline"></i>
@@ -34,7 +34,7 @@ $news = $news->getthongke();*/
                             <div class="inner">
                                 <h3><?php echo '14'; ?></h3>
 
-                                <p>Sản phẩm sắp hết</p>
+                                <p>Danh sách giảng viên loại giỏi</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -49,7 +49,7 @@ $news = $news->getthongke();*/
                             <div class="inner">
                                 <h3>18</h3>
 
-                                <p>Sản phẩm đã hết</p>
+                                <p>Danh sách giảng viên loại khá</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
@@ -65,7 +65,7 @@ $news = $news->getthongke();*/
                             <div class="inner">
                                 <h3>0</h3>
 
-                                <p>Sản phẩm hiện có</p>
+                                <p>Danh sách giảng viên chưa đạt</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>

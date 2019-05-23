@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\ClassSearch */
+/* @var $searchModel backend\models\SearchEvalutionform */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Danh sách lớp học';
+$this->title = 'Bản đánh giá giảng viên';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -26,8 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="box-header with-border">
                     <!-- Search Limit -->
                     <section class="content-search">
-                          <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-                    </section>
+                                            </section>
                     
                 </div>
                 <!-- /.box-header -->
@@ -35,23 +34,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row" style='padding:0px; margin:0px;'>
                         <!--ND-->
                             <table class="table table-hover table-bordered">
-
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-'name',
-            ['attribute'=>'Tên giảng viên',
-            'value'=>'teacher.teacherName',],
-            ['attribute'=>'Mã môn học',
-            'value'=>'schedule.offercode',],
-            // ['attribute'=>'Mã kỳ',
-            // 'value'=>'schedule.ID',],
-            
+            'attendanceID',
+            ['attribute'=>'Tên lớp',
+            'value'=>'attendance.name',],
+            'score',
+            'date',
+            'comment:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

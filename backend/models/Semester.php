@@ -40,7 +40,7 @@ class Semester extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'Mã kỳ',
+            'ID' => 'Mã học kỳ',
             'year' => 'Năm học',
         ];
     }

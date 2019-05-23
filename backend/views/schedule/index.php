@@ -26,25 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="box-header with-border">
                     <!-- Search Limit -->
                     <section class="content-search">
-                        <div class="form-inline">
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Tìm kiếm</span>
-                                <input type="text" name="search" onkeypress="FEnter(event);" id="search" class="form-control">
-                                <span class="input-group-addon"><i onclick="FChange();" class="glyphicon glyphicon-search"></i></span>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Hiển thị</span>
-                                <select name="limit" id="limit" onchange="FChange();" class="form-control">
-                                    <option value="10">10</option>
-                                    <option value="20">20</option>
-                                    <option value="30">30</option>
-                                    <option value="40">40</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                    <option value="all">Tất cả</option>
-                                </select>
-                            </div>
-                        </div>
+                          <?php echo $this->render('_search', ['model' => $searchModel]); ?>
                     </section>
                     
                 </div>
@@ -68,8 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['attribute'=>'Tên môn học',
             'value'=>'offercode0.subjectname',],
-            //'semesterID',
-           // 'offercode',
+            'semesterID',
+           'offercode',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

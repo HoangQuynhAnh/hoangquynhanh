@@ -15,14 +15,27 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
- <?= $form->field($model, 'ID') ?>
+ <section class="content-search">
+                            <div class="form-inline">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Mã học kỳ</span>
+                                    
+                                    <?= $form->field($model, 'ID')->textinput(['class' => 'form-control'])->label(false) ?>
 
-    <?= $form->field($model, 'year') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
+                                  </div>
+                                   <div class="input-group" style="margin-left: 30px">
+                                    <span class="input-group-addon" id="basic-addon1">Năm học</span>
+                                    
+                                    <?= $form->field($model, 'year')->textinput(['class' => 'form-control'])->label(false) ?>
+                                    
+    
+                                     <?= Html::submitButton('Tìm', ['class' => 'btn btn-primary']) ?>
+                                  </div>
+                                
+                            </div>
+</section>
+   
+   
 
     <?php ActiveForm::end(); ?>
 

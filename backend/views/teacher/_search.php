@@ -14,21 +14,27 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
+<section class="content-search">
+                            <div class="form-inline">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Mã giảng viên</span>
+                                    
+                                    <?= $form->field($model, 'teacherID')->textinput(['class' => 'form-control'])->label(false) ?>
 
-    <?= $form->field($model, 'teacherID') ?>
-
-    <?= $form->field($model, 'teacherName') ?>
-
-    <?= $form->field($model, 'departmentID') ?>
-
-    <?= $form->field($model, 'status') ?>
-
-    <?= $form->field($model, 'avatar') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
+                                  </div>
+                                   <div class="input-group" style="margin-left: 30px">
+                                    <span class="input-group-addon" id="basic-addon1">Tên giảng viên</span>
+                                    
+                                    <?= $form->field($model, 'teacherName')->textinput(['class' => 'form-control'])->label(false) ?>
+                                    
+    
+                                     <?= Html::submitButton('Tìm', ['class' => 'btn btn-primary']) ?>
+                                  </div>
+                                
+                            </div>
+</section>
+   
+   
 
     <?php ActiveForm::end(); ?>
 

@@ -16,7 +16,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'subjectname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(
+        [
+        0=>'Ẩn',
+        1=>'Hiện'
+        ]
+        
+    ) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 

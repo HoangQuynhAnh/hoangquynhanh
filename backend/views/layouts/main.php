@@ -136,6 +136,10 @@ $homeUrl=str_replace('/backend/web', '', Yii::$app->urlManager->baseUrl).'/';  ?
                                                 <?php echo Html::a('<span> Lớp học cho sinh viên<span>',['/attendance'],['class'=>'fa fa-star-half-o']);?></li>
                                                    <li class="treeview">
                                                 <?php echo Html::a('<span> Phiếu đánh giá<span>',['/evalutionform'],['class'=>'fa fa-file-o']);?></li>
+                                                  <li class="treeview">
+                                                <?php echo Html::a('<span> Tổng kết theo lớp<span>',['/result'],['class'=>'fa fa-star-half-o']);?></li>
+                                                  <li class="treeview">
+                                                <?php echo Html::a('<span> Tổng kết theo giảng viên<span>',['/evateacher'],['class'=>'fa fa-star-half-o']);?></li>
                                                </li>
 
                                                <li class="header">CÀI ĐẶT</li>
@@ -181,7 +185,7 @@ $homeUrl=str_replace('/backend/web', '', Yii::$app->urlManager->baseUrl).'/';  ?
                                     <div class="pull-right hidden-xs">
                                         <b>Version</b> 2.3.5</div>
                                         <p class="text-center">Copyright &copy; 2017
-                                            <a href="http://facebook.com/trungphatit">PYWeb</a>.</strong> All rights reserved.
+                                            <a href="">Nhóm 1</a>.</strong> Bài tập lớn
                                         </footer>
                                         <?php $this->endBody() ?>
 

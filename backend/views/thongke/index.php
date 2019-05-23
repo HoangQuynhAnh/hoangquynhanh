@@ -19,7 +19,7 @@ $news = $news->getthongke();*/
                         <div class="small-box bg-aqua">
                             <div class="inner">
                                 <h3><?php echo '14'; ?></h3>
-                                <p>Sản phẩm bán chạy </p>
+                                <p>Danh sách giảng viên xuất sắc</p>
                             </div>
                             <div class="icon">
                                 <i class="ion-ios-calendar-outline"></i>
@@ -34,7 +34,7 @@ $news = $news->getthongke();*/
                             <div class="inner">
                                 <h3><?php echo '14'; ?></h3>
 
-                                <p>Sản phẩm sắp hết</p>
+                                <p>Danh sách giảng viên loại giỏi</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -49,7 +49,7 @@ $news = $news->getthongke();*/
                             <div class="inner">
                                 <h3>18</h3>
 
-                                <p>Sản phẩm đã hết</p>
+                                <p>Danh sách giảng viên loại khá</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
@@ -65,7 +65,7 @@ $news = $news->getthongke();*/
                             <div class="inner">
                                 <h3>0</h3>
 
-                                <p>Sản phẩm hiện có</p>
+                                <p>Danh sách giảng viên chưa đạt</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
@@ -119,36 +119,6 @@ $news = $news->getthongke();*/
             <!-- /.content -->
             <!-- /.content-wrapper -->
            <script>
-                google.charts.load('current', {
-                    'packages': ['corechart']
-                });
-                google.charts.setOnLoadCallback(drawVisualization);
-
-                function drawVisualization() {
-                    // Some raw data (not necessarily accurate)
-                    var data = google.visualization.arrayToDataTable([
-                        ['Month', 'Bán ra', 'Đơn hàng'],
-                        ['01/2017', 0, 0],
-                        ['02/2017', 0, 0],
-                        ['03/2017', 0, 0],
-                        ['04/2017', 0, 0],
-                        ['05/2017', 0, 0],
-                        ['06/2017', 0, 0],
-                        ['07/2017', 0, 0],
-                        ['08/2017', 0, 0],
-                        ['09/2017', 0, 0],
-                        ['10/2017', 0, 0],
-                        ['11/2017', 0, 0],
-                        ['12/2017', 0, 0],
-                    ]);
-
-                    var options = {
-                        title: 'Số lượng bán ra từ 01/2017 - 12/2017',
-                        seriesType: 'bars'
-                    };
-
-                    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-                    chart.draw(data, options);
-                }
+            
             </script>
             

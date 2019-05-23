@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\User */
@@ -22,7 +23,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(
+        [
+        0=>'Ẩn',
+        1=>'Hiện'
+        ]
+        
+    ) ?>
 
     <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
 
