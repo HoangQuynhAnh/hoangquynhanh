@@ -55,7 +55,7 @@ class Result extends \yii\db\ActiveRecord
     }
     public function getDTB(){
         $getDTB=Yii::$app->db->createCommand('
-            select (@cnt := @cnt + 1) AS "#",classID,classes.name, AVG(score)as DTB, teacherName, department
+            select classID,classes.name, AVG(score)as DTB, teacherName, department
             from evalutionform, attendance,teacher,department,classes
             where evalutionform.attendanceID=attendance.id
             and teacher.teacherID = classes.teacherID
@@ -65,14 +65,28 @@ class Result extends \yii\db\ActiveRecord
         return $getDTB;
     }
     public function getTeacher(){
+        //cross join (select @cnt := 0) as dummy
         $getDTB=Yii::$app->db->createCommand('
-            select (@cnt := @cnt + 1) AS "#", AVG(score)as DTB, teacherName, department,classes.teacherID
-from evalutionform, attendance,teacher,department,classes
-where evalutionform.attendanceID=attendance.id
-and teacher.teacherID = classes.teacherID
-and attendance.classID = classes.id
-and department.id=teacher.departmentID
-group by classes.teacherID')->queryAll();
+            select AVG(score)as DTB, teacherName, department,classes.teacherID
+            from evalutionform, attendance,teacher,department,classes
+            where evalutionform.attendanceID=attendance.id
+            and teacher.teacherID = classes.teacherID
+            and attendance.classID = classes.id
+            and department.id=teacher.departmentID
+            group by classes.teacherID')->queryAll();
+        return $getDTB;
+    }
+    //dem tong so giao vien co diem gioi, xuat sac
+      public function getDSTeacher(){
+        $getDTB=Yii::$app->db->createCommand('
+            count(classes.teacherID),AVG(score)as DTB
+            from evalutionform, attendance,teacher,department,classes
+            where evalutionform.attendanceID=attendance.id
+            and teacher.teacherID = classes.teacherID
+            and attendance.classID = classes.id
+            and department.id=teacher.departmentID
+            and DTB>90
+            group by classes.teacherID')->queryAll();
         return $getDTB;
     }
 

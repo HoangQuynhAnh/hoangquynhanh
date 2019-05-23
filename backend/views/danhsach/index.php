@@ -24,8 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="box-header with-border">
                     <!-- Search Limit -->
                     <section class="content-search">
-                        <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-
+                        
                     </section>
                     
                 </div>

@@ -1,14 +1,10 @@
 <?php 
 use yii\helpers\Html;
-use backend\models\Products;
-use backend\models\Category;
-use backend\models\News;
+use backend\models\Result;
  ?>
-<?php /*
-$sanpham = new Products();
-$sanpham = $sanpham->getthongke();
-$news = new News();
-$news = $news->getthongke();*/
+<?php 
+//$sanpham = new Result();
+//$sanpham = $sanpham->getDSTeacher();
 ?>
         
             <section class="content">
@@ -18,13 +14,13 @@ $news = $news->getthongke();*/
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3><?php echo '14'; ?></h3>
+                                <h3><?php echo "11"; ?></h3>
                                 <p>Danh sách giảng viên xuất sắc</p>
                             </div>
                             <div class="icon">
                                 <i class="ion-ios-calendar-outline"></i>
                             </div>
-                            <?php echo Html::a('',['/books'],['class'=>'small-box-footer']);  ?>
+                            <?php echo Html::a('Chi tiết',['/danhsach'],['class'=>'small-box-footer']);  ?>
              </div>
                     </div>
                     <!-- ./col -->
@@ -39,7 +35,7 @@ $news = $news->getthongke();*/
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <?php echo Html::a('',['/news'],['class'=>'small-box-footer']);  ?>
+                            <?php echo Html::a('Chi tiết',['/danhsach'],['class'=>'small-box-footer']);  ?>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -54,7 +50,7 @@ $news = $news->getthongke();*/
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                    <?php echo Html::a('',['/lienhe'],['class'=>'small-box-footer']);  ?>
+                    <?php echo Html::a('Chi tiết',['/danhsach'],['class'=>'small-box-footer']);  ?>
 
                         </div>
                     </div>
@@ -70,7 +66,7 @@ $news = $news->getthongke();*/
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <?php echo Html::a('',['/donhang'],['class'=>'small-box-footer']);  ?>
+                            <?php echo Html::a('Chi tiết',['/danhsach'],['class'=>'small-box-footer']);  ?>
 
                         </div>
                     </div>
@@ -85,7 +81,7 @@ $news = $news->getthongke();*/
                         <!-- LINE CHART -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Bán hàng & Doanh thu</h3>
+                                <h3 class="box-title">Biểu đồ</h3>
                             </div>
                             <div class="box-body">
                                 <div class="chart">
