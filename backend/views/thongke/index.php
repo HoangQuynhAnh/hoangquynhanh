@@ -2,6 +2,9 @@
 use yii\helpers\Html;
 use backend\models\Result;
  ?>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <?php 
 //$sanpham = new Result();
 //$sanpham = $sanpham->getDSTeacher();
@@ -81,30 +84,29 @@ use backend\models\Result;
                         <!-- LINE CHART -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Biểu đồ</h3>
+                                <h3 class="box-title">Thống kê giảng viên</h3>
                             </div>
                             <div class="box-body">
-                                <div class="chart">
-                                    <div id="chart_div" style="width: 100%; height: 250px;"></div>
-                                </div>
+                                <div class="chart" >
+                                    <div id="columnchart_material" >
+                                 
+                                    </div>
+                        <div id="columnchart_material1" style=" height: 250px; width:700px;float:left;">
+                                 
+                                    </div>
+                        
+                                    <div id="piechart" style="width: 250px; height: 200px;float:right; margin-right: 40px">
+
+                                    </div>
+                                 </div>
+
                             </div>
+
                             <div class="box-footer">
                                 <div class="row">
-                                    <div class="col-sm-4 col-xs-6">
-                                        <div class="description-block border-right">
-                                            <h5 class="description-header" style="color: #e90000;">0 VNĐ</h5>
-                                            <span class="description-text">Tổng doanh thu</span>
-                                        </div>
                                         <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-4 col-xs-6">
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-4 col-xs-6">
-                                        <!-- /.description-block -->
-                                    </div>
+                                    
+                    
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -115,6 +117,66 @@ use backend\models\Result;
             <!-- /.content -->
             <!-- /.content-wrapper -->
            <script>
-            
-            </script>
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Chưa đạt', 2],
+            ['Khá', 2],
+            ['Giỏi', 3],
+            ['Xuất sắc', 7]
+            ]);
+             var options = {'title':'TỔNG QUAN CẢ TRƯỜNG', 'width':500, 'height':300};
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+            }
+        </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['CNTT', 1000, 400, 200],
+          ['Ngữ văn', 1170, 460, 250],
+          ['Toán', 660, 1120, 300],
+          ['Lý', 1030, 540, 350],
+           ['CNTT', 1000, 400, 200],
+          ['Ngữ văn', 1170, 460, 250],
+          ['Toán', 660, 1120, 300],
+          ['Lý', 1030, 540, 350],
+           ['CNTT', 1000, 400, 200],
+          ['Ngữ văn', 1170, 460, 250],
+          ['Toán', 660, 1120, 300],
+          ['Lý', 1030, 540, 350],
+           ['CNTT', 1000, 400, 200],
+          ['Ngữ văn', 1170, 460, 250],
+          ['Toán', 660, 1120, 300],
+          ['Lý', 1030, 540, 350],
+
+           ['CNTT', 1000, 400, 200],
+          ['Ngữ văn', 1170, 460, 250],
+          ['Toán', 660, 1120, 300],
+
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Các khoa'         }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+var chart1 = new google.charts.Bar(document.getElementById('columnchart_material1'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+         chart1.draw(data, google.charts.Bar.convertOptions(options));
+        
+
+      }
+
+    </script>
+ 
+
             
