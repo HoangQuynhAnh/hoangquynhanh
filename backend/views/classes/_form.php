@@ -7,6 +7,9 @@ use yii\helpers\ArrayHelper;
 use backend\models\Teacher;
 
 use backend\models\Schedule;
+
+use backend\models\semester;
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Classes */
 /* @var $form yii\widgets\ActiveForm */
@@ -17,10 +20,11 @@ use backend\models\Schedule;
     <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'scheduleID')->dropDownList(
-        ArrayHelper::map(schedule::find()->all(), 'id','semesterID'),
+        ArrayHelper::map(semester::find()->all(), 'ID','year'),
         ['prompt'=>'---Chọn kỳ học---']
 
     ) ?>
+    <?= $form->field($model, 'name')->textInput()?>
 
     <?= $form->field($model, 'teacherID')->dropDownList(
         ArrayHelper::map(teacher::find()->all(), 'teacherID','teacherName'),

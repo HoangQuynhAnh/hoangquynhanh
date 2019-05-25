@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'classID')->textInput() ?>
 
+    <?= $form->field($model, 'name')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
     </div>

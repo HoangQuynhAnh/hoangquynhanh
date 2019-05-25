@@ -53,6 +53,7 @@ class Result extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Classes::className(), ['id' => 'classID']);
     }
+    // lay ra danh diem trung binh cua giao viên
     public function getDTB(){
         $getDTB=Yii::$app->db->createCommand('
             select classID,classes.name, AVG(score)as DTB, teacherName, department
@@ -89,5 +90,19 @@ class Result extends \yii\db\ActiveRecord
             group by classes.teacherID')->queryAll();
         return $getDTB;
     }
+    //lay danh sach giao vien theo diem
+     public function getmarkTeacher(){
+        $getDTB=Yii::$app->db->createCommand('
+            select AVG(score)as DTB, teacherName, department,classes.teacherID
+            from evalutionform, attendance,teacher,department,classes
+            where evalutionform.attendanceID=attendance.id
+            and teacher.teacherID = classes.teacherID
+            and attendance.classID = classes.id
+            and department.id=teacher.departmentID
+            and DTB=90
+            group by classes.teacherID')->queryAll();
+        return $getDTB;
+    }
+
 
 }

@@ -145,7 +145,7 @@ $homeUrl=str_replace('/backend/web', '', Yii::$app->urlManager->baseUrl).'/';  ?
 
                                          <li class="header">CÀI ĐẶT</li>
 
-                                         <li class="treeview">
+                                         <<!-- li class="treeview">
                                           <a href="#">
                                             <i class="glyphicon glyphicon-cog"></i>
                                             <span>Admin</span>
@@ -165,7 +165,7 @@ $homeUrl=str_replace('/backend/web', '', Yii::$app->urlManager->baseUrl).'/';  ?
 
                                             </li>
                                           </ul>
-                                        </li>
+                                        </li> -->
 
 
                                         <li class="treeview">

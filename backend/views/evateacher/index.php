@@ -47,10 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
         $getDTB=new Result();
         $getDTB=$getDTB->getDTB();
+        $i=0;
         foreach ($getDTB as $value) {
             echo '<tr>';
-            $i=0;
-            $i++;
+            $i=$i+1;
+            //$i=$i+1;
             echo '<td>'.$i.'</td>';
             echo '<td>'.$value['department'].'</td>';
            // echo '<td>'.$value['teacherID'].'</td>';
@@ -58,19 +59,19 @@ $this->params['breadcrumbs'][] = $this->title;
             echo '<td>'.$value['teacherName'].'</td>';
             echo '<td>'.round($value['DTB']).'</td>';
             echo '<td>';
-            if($value['DTB']>90){
+            if($value['DTB']>=90){
                 echo'<div class="custom-control custom-checkbox">
 
                 <label class="btn btn-danger">Xuất sắc</label>
                 </div>';
             }
-            elseif($value['DTB']<90&&$value['DTB']>70){
+            elseif($value['DTB']<90&&$value['DTB']>=70){
                echo'<div class="custom-control custom-checkbox">
 
                <label class="btn btn-info">Giỏi</label>
                </div>';
            }
-           elseif($value['DTB']<70&&$value['DTB']>50){
+           elseif($value['DTB']<70&&$value['DTB']>=50){
                echo'<div class="custom-control custom-checkbox">
 
                <label class="btn btn-success">Khá</label>
