@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-05-25 13:59:06
+Date: 2019-07-06 23:01:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,7 +57,7 @@ CREATE TABLE `attendance` (
   KEY `classID` (`classID`),
   CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `user` (`id`),
   CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`classID`) REFERENCES `classes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of attendance
@@ -85,6 +85,7 @@ INSERT INTO `attendance` VALUES ('20', '4', '2', 'Xử lý ảnh_1');
 INSERT INTO `attendance` VALUES ('21', '5', '2', 'Xử lý ảnh_1');
 INSERT INTO `attendance` VALUES ('22', '6', '2', 'Xử lý ảnh_1');
 INSERT INTO `attendance` VALUES ('40', '7', '2', 'Xử lý ảnh_1');
+INSERT INTO `attendance` VALUES ('42', '1', '2', '');
 
 -- ----------------------------
 -- Table structure for `classes`
@@ -100,7 +101,7 @@ CREATE TABLE `classes` (
   KEY `teacherID` (`teacherID`),
   CONSTRAINT `classes_ibfk_1` FOREIGN KEY (`scheduleID`) REFERENCES `schedule` (`id`),
   CONSTRAINT `classes_ibfk_2` FOREIGN KEY (`teacherID`) REFERENCES `teacher` (`teacherID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of classes
@@ -117,6 +118,7 @@ INSERT INTO `classes` VALUES ('11', '9', '10', 'Ngôn ngữ hình thức');
 INSERT INTO `classes` VALUES ('12', '10', '2', 'Cấu trúc máy tính');
 INSERT INTO `classes` VALUES ('15', '11', '7', 'Giải tích 2');
 INSERT INTO `classes` VALUES ('16', '1', '2', 'A');
+INSERT INTO `classes` VALUES ('17', '1', '15', 'A');
 
 -- ----------------------------
 -- Table structure for `department`
@@ -127,7 +129,7 @@ CREATE TABLE `department` (
   `department` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `studentID` (`department`(255))
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of department
@@ -156,6 +158,7 @@ INSERT INTO `department` VALUES ('21', 'Quốc phòng');
 INSERT INTO `department` VALUES ('22', 'Việt Nam học');
 INSERT INTO `department` VALUES ('23', 'Tâm lý học');
 INSERT INTO `department` VALUES ('24', 'Công tác xã hội');
+INSERT INTO `department` VALUES ('25', 'Toán');
 
 -- ----------------------------
 -- Table structure for `evalutionform`
@@ -166,6 +169,22 @@ CREATE TABLE `evalutionform` (
   `score` tinyint(3) NOT NULL,
   `date` date NOT NULL,
   `comment` text COLLATE utf8_unicode_ci,
+  `answer1` int(11) DEFAULT NULL,
+  `answer2` int(11) DEFAULT NULL,
+  `answer3` int(11) DEFAULT NULL,
+  `answer4` int(11) DEFAULT NULL,
+  `answer5` int(11) DEFAULT NULL,
+  `answer6` int(11) DEFAULT NULL,
+  `answer7` int(11) DEFAULT NULL,
+  `answer8` int(11) DEFAULT NULL,
+  `answer9` int(11) DEFAULT NULL,
+  `answer10` int(11) DEFAULT NULL,
+  `answer11` int(11) DEFAULT NULL,
+  `answer12` int(11) DEFAULT NULL,
+  `answer13` int(11) DEFAULT NULL,
+  `answer14` int(11) DEFAULT NULL,
+  `answer15` int(11) DEFAULT NULL,
+  `answer16` int(11) DEFAULT NULL,
   PRIMARY KEY (`attendanceID`),
   CONSTRAINT `evalutionform_ibfk_1` FOREIGN KEY (`attendanceID`) REFERENCES `attendance` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -173,24 +192,25 @@ CREATE TABLE `evalutionform` (
 -- ----------------------------
 -- Records of evalutionform
 -- ----------------------------
-INSERT INTO `evalutionform` VALUES ('1', '60', '2019-05-19', '	');
-INSERT INTO `evalutionform` VALUES ('2', '90', '2019-05-19', 'Thầy hay đi có việc bận');
-INSERT INTO `evalutionform` VALUES ('3', '40', '0000-00-00', null);
-INSERT INTO `evalutionform` VALUES ('4', '40', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('5', '60', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('6', '70', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('7', '50', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('8', '45', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('9', '67', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('10', '87', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('11', '78', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('12', '57', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('13', '56', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('14', '98', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('15', '100', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('16', '39', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('17', '56', '2019-05-19', null);
-INSERT INTO `evalutionform` VALUES ('18', '67', '2019-05-19', null);
+INSERT INTO `evalutionform` VALUES ('1', '80', '2019-06-22', '	', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5');
+INSERT INTO `evalutionform` VALUES ('2', '90', '2019-05-19', 'Thầy hay đi có việc bận', '5', '4', '4', '4', '4', '4', '4', '4', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('3', '40', '0000-00-00', null, '5', '3', '3', '3', '3', '3', '3', '3', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('4', '40', '2019-05-19', null, '5', '2', '2', '2', '2', '2', '2', '2', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('5', '60', '2019-05-19', null, '5', '1', '1', '1', '1', '1', '1', '1', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('6', '70', '2019-05-19', null, '5', '1', '1', '1', '1', '1', '1', '1', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('7', '50', '2019-05-19', null, '5', '2', '2', '2', '2', '2', '2', '2', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('8', '45', '2019-05-19', null, '5', '3', '3', '3', '3', '3', '3', '3', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('9', '67', '2019-05-19', null, '5', '4', '4', '4', '4', '4', '4', '4', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('10', '87', '2019-05-19', null, '5', '5', '5', '5', '5', '5', '5', '5', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('11', '78', '2019-05-19', null, '5', '4', '4', '4', '4', '4', '4', '4', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('12', '57', '2019-05-19', null, '5', '3', '3', '3', '3', '3', '3', '3', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('13', '56', '2019-05-19', null, '5', '1', '1', '1', '1', '1', '1', '1', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('14', '98', '2019-05-19', null, '5', '2', '2', '2', '2', '2', '2', '2', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('15', '100', '2019-05-19', null, '5', '3', '3', '3', '3', '3', '3', '3', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('16', '39', '2019-05-19', null, '5', '4', '4', '4', '4', '4', '4', '4', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('17', '56', '2019-05-19', null, '5', '5', '5', '5', '5', '5', '5', '5', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('18', '67', '2019-05-19', null, '5', '3', '3', '3', '3', '3', '3', '3', null, null, null, null, null, null, null, null);
+INSERT INTO `evalutionform` VALUES ('42', '90', '0000-00-00', '', '5', '2', '2', '2', '2', '2', '2', '2', null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `major`
@@ -257,7 +277,7 @@ CREATE TABLE `schedule` (
   KEY `semesterID` (`semesterID`),
   CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`offercode`) REFERENCES `subjects` (`offercode`),
   CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`semesterID`) REFERENCES `semester` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of schedule
@@ -275,6 +295,7 @@ INSERT INTO `schedule` VALUES ('10', '6', 'COMP 228');
 INSERT INTO `schedule` VALUES ('11', '6', 'COMP 325	');
 INSERT INTO `schedule` VALUES ('12', '6', 'MATH 154');
 INSERT INTO `schedule` VALUES ('13', '6', 'MUSI 109');
+INSERT INTO `schedule` VALUES ('16', '3', 'COMP 325	');
 
 -- ----------------------------
 -- Table structure for `semester`
@@ -338,6 +359,7 @@ INSERT INTO `subjects` VALUES ('COMP 228', 'Cấu trúc máy tính', '1', null);
 INSERT INTO `subjects` VALUES ('COMP 313', 'Xử lý ảnh', '1', '');
 INSERT INTO `subjects` VALUES ('COMP 325	', 'Bài tập lớn môn học', '1', '');
 INSERT INTO `subjects` VALUES ('COMP 418', 'Mạng máy tính nâng cao', '1', null);
+INSERT INTO `subjects` VALUES ('CT231', '', '10', null);
 INSERT INTO `subjects` VALUES ('MATH 143', 'Xác suất thống kê', '1', null);
 INSERT INTO `subjects` VALUES ('MATH 154', 'Giải tích 2', '1', null);
 INSERT INTO `subjects` VALUES ('MATH 264', 'Phương pháp tính và tối ưu', '1', '');
@@ -361,7 +383,7 @@ CREATE TABLE `teacher` (
   KEY `departmentID` (`departmentID`),
   CONSTRAINT `teacher_ibfk_1` FOREIGN KEY (`departmentID`) REFERENCES `department` (`id`),
   CONSTRAINT `teacher_ibfk_2` FOREIGN KEY (`departmentID`) REFERENCES `department` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of teacher
@@ -379,6 +401,7 @@ INSERT INTO `teacher` VALUES ('10', 'Nguyễn Thị Hồng', '2', '1', null);
 INSERT INTO `teacher` VALUES ('11', 'Vũ Thành Trung', '2', '1', null);
 INSERT INTO `teacher` VALUES ('12', 'Nguyễn Thế Trọng', '3', '1', null);
 INSERT INTO `teacher` VALUES ('15', 'Nguyễn Thế Hùng', '1', '1', null);
+INSERT INTO `teacher` VALUES ('19', 'Đặng Thị Thu Hiền', '17', '1', '');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -387,8 +410,8 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(9) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `auth_key` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password_hash` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `tel` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
@@ -402,12 +425,12 @@ CREATE TABLE `user` (
   UNIQUE KEY `email` (`email`) USING BTREE,
   UNIQUE KEY `password_reset_token` (`password_reset_token`) USING BTREE,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '665601001', 'iuEf0g12cB7yptA6BjaywDi7YgeeZf_c', '$2y$13$SZXQQjXbSCI3g03cZ5ynkOxvUI9WdeElrbIenaB/JVutpcPHq1vpG', null, 'quynhanh@gmail.com', '0123456789', 'Hà Nội', 'Hoàng Quỳnh Anh', '1', 'giphy-downsized.gif', '64');
+INSERT INTO `user` VALUES ('1', '665601001', 'iuEf0g12cB7yptA6BjaywDi7YgeeZf_c', '$2y$13$SZXQQjXbSCI3g03cZ5ynkOxvUI9WdeElrbIenaB/JVutpcPHq1vpG', null, 'quynhanh1@gmail.com', '0123456789', 'Hà Nội', 'Hoàng Quỳnh Anh', '1', 'giphy-downsized.gif', '64');
 INSERT INTO `user` VALUES ('2', '665601002', 'iuEf0g12cB7yptA6BjaywDi7YgeeZf_c', '$2y$13$SZXQQjXbSCI3g03cZ5ynkOxvUI9WdeElrbIenaB/JVutpcPHq1vpG', null, 'khang@gmail.com', '0123456789', 'Hà Nội', 'Nguyễn Nhật Khang', '1', 'giphy-downsized.gif', '65');
 INSERT INTO `user` VALUES ('3', '665601003', 'iuEf0g12cB7yptA6BjaywDi7YgeeZf_c', '$2y$13$SZXQQjXbSCI3g03cZ5ynkOxvUI9WdeElrbIenaB/JVutpcPHq1vpG', null, 'myclover@gmail.com', '0123456789', 'Hà Nam', 'Vũ Ánh Dương', '1', 'giphy-downsized.gif', '64');
 INSERT INTO `user` VALUES ('4', '645601004', 'iuEf0g12cB7yptA6BjaywDi7YgeeZf_c', '$2y$13$SZXQQjXbSCI3g03cZ5ynkOxvUI9WdeElrbIenaB/JVutpcPHq1vpG', null, 'duong@gmail.com', '0123456789', 'Nam Định', 'Nguyễn Đình Hoàn', '1', 'giphy-downsized.gif', '66');
